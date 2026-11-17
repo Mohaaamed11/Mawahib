@@ -1,1 +1,1098 @@
-# Mawahib
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مواهب — منصة الصحة النفسية للشباب الطموح</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#0F4C46; --deep2:#0B342F; --teal:#0EA5A0; --teal-bright:#14B8A6;
+    --warm:#F4A261; --warm-d:#E07B43; --warm-soft:#FCE9D6;
+    --bg:#F1F7F5; --surface:#FFFFFF; --surface2:#F7FBFA;
+    --ink:#14201F; --muted:#5F7572; --line:#E1ECE9; --good:#2FB39A;
+    --shadow:0 14px 40px -16px rgba(11,52,47,.28);
+    --shadow-sm:0 6px 18px -10px rgba(11,52,47,.25);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+  h1,h2,h3,h4,.dsp{font-family:'Tajawal',sans-serif}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+  /* ===== شريط التنقّل ===== */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(15,76,70,.97);backdrop-filter:blur(10px);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-in{max-width:1200px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;gap:22px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Tajawal';font-weight:900;font-size:20px;flex-shrink:0}
+  .brand .m{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--teal-bright),var(--warm));display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 6px 16px -6px rgba(244,162,97,.6)}
+  .links{display:flex;gap:4px;margin-right:auto;flex-wrap:wrap}
+  .links button{background:none;border:none;color:#BFDAD5;font-family:'IBM Plex Sans Arabic';font-size:14.5px;font-weight:500;cursor:pointer;padding:9px 15px;border-radius:10px;transition:all .2s}
+  .links button:hover{color:#fff;background:rgba(255,255,255,.07)}
+  .links button.on{color:#fff;background:rgba(20,184,166,.22)}
+  .links button:focus-visible{outline:2px solid var(--warm);outline-offset:2px}
+  .nav-badge{font-size:11.5px;color:#9FD8CF;border:1px solid rgba(255,255,255,.16);padding:6px 12px;border-radius:999px;flex-shrink:0;white-space:nowrap}
+  @media(max-width:880px){.nav-badge{display:none}.nav-in{gap:10px}.links button{padding:8px 11px;font-size:13.5px}}
+
+  .view{display:none;animation:fade .5s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .section{padding:52px 0}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.03em;color:var(--deep);background:rgba(20,184,166,.12);border:1px solid rgba(20,184,166,.25);padding:7px 15px;border-radius:999px;font-weight:600}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--warm)}
+
+  /* أزرار */
+  .btn{border:none;cursor:pointer;font-family:'Tajawal';font-weight:700;font-size:16px;padding:14px 26px;border-radius:14px;transition:transform .15s,box-shadow .2s;display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+  .btn:active{transform:scale(.97)}
+  .btn-primary{background:linear-gradient(135deg,var(--teal-bright),var(--deep));color:#fff;box-shadow:0 12px 26px -10px rgba(14,165,160,.6)}
+  .btn-primary:hover{box-shadow:0 16px 32px -10px rgba(14,165,160,.7);transform:translateY(-2px)}
+  .btn-ghost{background:var(--surface);color:var(--deep);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--teal)}
+  .btn:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+  .btn-sm{padding:10px 18px;font-size:14px;border-radius:11px}
+
+  /* ===== الرئيسية ===== */
+  .hero{background:linear-gradient(165deg,var(--deep) 0%,var(--deep2) 100%);color:#fff;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.22),transparent 70%);top:-200px;left:-100px}
+  .hero::after{content:"";position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(244,162,97,.13),transparent 70%);bottom:-150px;right:-80px}
+  .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:66px 0 72px}
+  .hero h1{font-size:46px;font-weight:900;line-height:1.2;margin:20px 0 18px}
+  .hero h1 .hl{color:var(--warm)}
+  .hero p.lead{font-size:17.5px;color:#C8E2DD;line-height:1.85;margin-bottom:18px;max-width:520px}
+  .quote{border-right:3px solid var(--warm);padding:6px 16px;margin:24px 0 28px;color:#DCEFEB;font-size:14.5px;max-width:500px}
+  .quote span{display:block;color:#8FC4BB;font-size:12.5px;margin-top:6px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-art{position:relative;height:340px;display:flex;align-items:center;justify-content:center}
+  .ring{position:absolute;border:1.5px solid rgba(20,184,166,.35);border-radius:50%;animation:rip 3.4s ease-out infinite}
+  .ring:nth-child(2){animation-delay:1.1s}.ring:nth-child(3){animation-delay:2.2s}
+  @keyframes rip{0%{width:90px;height:90px;opacity:.9}100%{width:330px;height:330px;opacity:0}}
+  .core{width:90px;height:90px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--warm),var(--warm-d));box-shadow:0 0 60px rgba(244,162,97,.55);z-index:2;display:flex;align-items:center;justify-content:center;font-size:42px}
+  @media(max-width:860px){.hero-in{grid-template-columns:1fr;gap:20px;padding:44px 0}.hero h1{font-size:34px}.hero-art{height:220px}}
+
+  /* المشكلة - الأعمدة */
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 38px}
+  .sec-head h2{font-size:32px;font-weight:800;margin:14px 0 12px;line-height:1.3}
+  .sec-head p{color:var(--muted);font-size:16px}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+  .pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .pcard .pic{width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px;background:var(--warm-soft)}
+  .pcard:nth-child(2) .pic{background:rgba(20,184,166,.14)}
+  .pcard:nth-child(3) .pic{background:#E8EEFD}
+  .pcard h3{font-size:19px;font-weight:800;margin-bottom:8px}
+  .pcard p{color:var(--muted);font-size:14.5px;line-height:1.75}
+  @media(max-width:780px){.pillars{grid-template-columns:1fr}}
+
+  /* شريط المسارين */
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+  .pathcard{border-radius:22px;padding:30px;color:#fff;position:relative;overflow:hidden;cursor:pointer;transition:transform .2s}
+  .pathcard:hover{transform:translateY(-4px)}
+  .pathcard.acad{background:linear-gradient(150deg,#125E56,#0E443E)}
+  .pathcard.tal{background:linear-gradient(150deg,#C77B3E,#A85F2C)}
+  .pathcard .tag{font-size:12.5px;opacity:.85;font-weight:600;margin-bottom:10px}
+  .pathcard h3{font-size:23px;font-weight:800;margin-bottom:10px}
+  .pathcard p{font-size:14.5px;opacity:.92;line-height:1.75;margin-bottom:18px}
+  .pathcard .go{display:inline-flex;align-items:center;gap:7px;font-family:'Tajawal';font-weight:700;font-size:15px;background:rgba(255,255,255,.16);padding:9px 18px;border-radius:11px}
+  @media(max-width:780px){.paths{grid-template-columns:1fr}}
+
+  /* ===== عام: العنوان الداخلي ===== */
+  .page-head{background:linear-gradient(160deg,var(--deep),var(--deep2));color:#fff;padding:40px 0 44px}
+  .page-head .wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .page-head .ic{width:60px;height:60px;border-radius:17px;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;background:rgba(255,255,255,.1)}
+  .page-head h2{font-size:28px;font-weight:800}
+  .page-head p{color:#BFDAD5;font-size:15px;margin-top:4px}
+
+  /* بطاقات/شبكات داخلية */
+  .grid-2{display:grid;grid-template-columns:1.4fr .9fr;gap:24px;align-items:start}
+  @media(max-width:880px){.grid-2{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow-sm);margin-bottom:20px}
+  .card h3{font-size:17px;font-weight:800;margin-bottom:4px}
+  .card .csub{color:var(--muted);font-size:13px;margin-bottom:16px}
+  .card-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .card-h a{font-size:13px;color:var(--teal);cursor:pointer;font-weight:600}
+
+  .care{background:linear-gradient(120deg,var(--deep),#13635B);border-radius:16px;padding:18px 20px;color:#EAF5F3;display:flex;gap:14px;align-items:center;margin-bottom:20px}
+  .care .e{font-size:26px}
+  .care b{color:#fff}
+  .care p{font-size:13.5px;line-height:1.6;color:#CFE9E4}
+
+  .members{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+  .av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Tajawal';font-weight:700;font-size:15px;color:#fff;margin-left:-8px;border:3px solid var(--surface)}
+  .members .more{width:42px;height:42px;border-radius:50%;background:var(--line);color:var(--deep);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin-left:-8px;border:3px solid var(--surface);font-family:'Tajawal'}
+  .members .lbl{margin-right:14px;font-size:13.5px;color:var(--muted)}
+  .members .lbl b{color:var(--ink);font-family:'Tajawal'}
+
+  .res{display:flex;gap:13px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:13px;margin-bottom:10px;transition:transform .15s,box-shadow .2s;cursor:pointer;background:var(--surface)}
+  .res:hover{transform:translateX(-4px);box-shadow:var(--shadow-sm)}
+  .res .ric{width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:19px}
+  .res.pdf .ric{background:#FDE7E7;color:#D9534F}.res.vid .ric{background:#E7F0FD;color:#3E7BD9}.res.note .ric{background:var(--warm-soft);color:#D98A45}
+  .res .rm b{display:block;font-family:'Tajawal';font-weight:700;font-size:14.5px}
+  .res .rm small{color:var(--muted);font-size:12.5px}
+  .res .free{margin-right:auto;font-size:11px;background:rgba(47,179,154,.12);color:var(--good);padding:5px 10px;border-radius:8px;font-weight:600;flex-shrink:0}
+
+  .q{border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px;background:var(--surface)}
+  .q .who{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+  .q .who .av{margin:0;width:36px;height:36px;border:none}
+  .q .who b{font-family:'Tajawal';font-weight:700;font-size:14px}
+  .q .who small{color:var(--muted);font-size:12px;display:block}
+  .q .qt{font-size:14.5px;line-height:1.7;color:#2A3B39;margin-bottom:12px}
+  .q .qf{display:flex;gap:18px;align-items:center;padding-top:11px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .q .qf .ans{color:var(--good);font-weight:600}
+  .q .qf .rep{margin-right:auto;color:var(--teal);font-weight:600;cursor:pointer}
+
+  /* الشريط الجانبي الإحصائي */
+  .side .sbox{background:linear-gradient(160deg,var(--deep),var(--deep2));color:#fff;border-radius:18px;padding:22px;margin-bottom:20px}
+  .side .sbox h4{font-size:15px;font-weight:700;margin-bottom:16px}
+  .clarity .cl-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+  .clarity .cl-h span{font-family:'Tajawal';font-weight:800;font-size:24px;color:var(--warm)}
+  .bar{height:10px;background:rgba(255,255,255,.13);border-radius:999px;overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--teal-bright),var(--warm))}
+  .clarity small{display:block;margin-top:12px;color:#BFDAD5;font-size:12.5px;line-height:1.6}
+  .goalbox{background:var(--surface);border:1px dashed var(--teal);border-radius:16px;padding:18px;display:flex;gap:14px;align-items:center}
+  .goalbox .ring2{width:56px;height:56px;flex-shrink:0;border-radius:50%;background:conic-gradient(var(--teal) 72%,#E3ECEA 0);display:flex;align-items:center;justify-content:center}
+  .goalbox .ring2 i{width:42px;height:42px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:'Tajawal';font-weight:800;font-size:13px;color:var(--deep);font-style:normal}
+  .goalbox b{display:block;font-family:'Tajawal';font-weight:700;font-size:14px;margin-bottom:3px}
+  .goalbox small{color:var(--muted);font-size:12.5px}
+
+  /* ===== المواهب: الفئات ===== */
+  .note-bar{background:var(--warm-soft);border-radius:14px;padding:16px 18px;font-size:14px;color:#9A6433;line-height:1.7;margin-bottom:26px;display:flex;gap:12px;align-items:flex-start}
+  .note-bar b{font-family:'Tajawal'}
+  .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:880px){.cats{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.cats{grid-template-columns:1fr}}
+  .cat{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:22px;cursor:pointer;text-align:center;transition:transform .18s,border-color .2s,box-shadow .2s;font-family:inherit}
+  .cat:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:var(--shadow)}
+  .cat:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+  .cat .ce{width:62px;height:62px;border-radius:17px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:30px;background:var(--surface2)}
+  .cat b{display:block;font-family:'Tajawal';font-weight:700;font-size:16px;color:var(--ink);margin-bottom:4px}
+  .cat small{color:var(--muted);font-size:12.5px}
+  .cat.other{border-style:dashed;border-color:var(--teal)}
+  .cat.other .ce{background:rgba(20,184,166,.1)}
+
+  .discover-cta{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:var(--shadow-sm)}
+  .discover-cta .dic{width:54px;height:54px;border-radius:15px;background:rgba(20,184,166,.12);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+  .discover-cta .dt{flex:1;min-width:200px}
+  .discover-cta .dt b{font-family:'Tajawal';font-weight:800;font-size:18px;display:block;margin-bottom:4px}
+  .discover-cta .dt p{color:var(--muted);font-size:14px}
+
+  /* مودال أخرى */
+  .modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(11,52,47,.55);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px}
+  .modal.show{display:flex}
+  .modal-box{background:var(--surface);border-radius:22px;padding:30px;max-width:440px;width:100%;box-shadow:var(--shadow);animation:pop .3s ease}
+  @keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+  .modal-box .mi{width:58px;height:58px;border-radius:16px;background:rgba(20,184,166,.12);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:16px}
+  .modal-box h3{font-size:21px;font-weight:800;margin-bottom:8px}
+  .modal-box p{color:var(--muted);font-size:14px;margin-bottom:18px;line-height:1.7}
+  .modal-box input{width:100%;padding:14px;border:1.5px solid var(--line);border-radius:13px;font-family:inherit;font-size:15px;margin-bottom:16px}
+  .modal-box input:focus{outline:none;border-color:var(--teal)}
+  .modal-box .mrow{display:flex;gap:10px}
+  #otherDone{display:none}
+  #otherDone .ok{width:58px;height:58px;border-radius:50%;background:rgba(47,179,154,.14);color:var(--good);display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:16px}
+
+  /* ===== الاكتشاف ===== */
+  .disc-wrap{max-width:680px;margin:0 auto}
+  .method-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  @media(max-width:620px){.method-cards{grid-template-columns:1fr}}
+  .method{background:var(--surface);border:1.5px solid var(--line);border-radius:20px;padding:26px;cursor:pointer;text-align:center;transition:transform .18s,border-color .2s,box-shadow .2s;font-family:inherit}
+  .method:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:var(--shadow)}
+  .method:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+  .method .mie{width:64px;height:64px;border-radius:18px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:32px;background:rgba(20,184,166,.12)}
+  .method.g .mie{background:var(--warm-soft)}
+  .method b{display:block;font-family:'Tajawal';font-weight:800;font-size:18px;margin-bottom:8px}
+  .method p{color:var(--muted);font-size:13.5px;line-height:1.7;margin-bottom:14px}
+  .method .mtag{display:inline-block;font-size:11.5px;font-weight:600;color:var(--deep);background:var(--surface2);padding:6px 13px;border-radius:999px}
+  .method.g .mtag{color:var(--warm-d);background:var(--warm-soft)}
+  .ai-analyzing{text-align:center;padding:30px 0;display:none}
+  .ai-analyzing.show{display:block;animation:fade .4s ease}
+  .ai-spin{width:64px;height:64px;border-radius:18px;margin:0 auto 18px;background:linear-gradient(135deg,var(--teal-bright),var(--warm));display:flex;align-items:center;justify-content:center;font-size:30px;animation:spin 1.4s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .ai-analyzing h3{font-size:21px;font-weight:800;margin-bottom:8px}
+  .ai-analyzing p{color:var(--muted);font-size:14px}
+  .progress{display:flex;gap:8px;margin-bottom:28px}
+  .progress i{flex:1;height:6px;border-radius:999px;background:var(--line);transition:background .3s}
+  .progress i.on{background:var(--teal)}
+  .qstep{display:none}.qstep.active{display:block;animation:fade .4s ease}
+  .qstep .qn{font-size:13px;color:var(--teal);font-weight:600;margin-bottom:10px}
+  .qstep h3{font-size:25px;font-weight:800;margin-bottom:8px;line-height:1.35}
+  .qstep .qhint{color:var(--muted);font-size:14.5px;margin-bottom:22px}
+  .choices{display:flex;flex-direction:column;gap:12px}
+  .choice{background:var(--surface);border:1.5px solid var(--line);border-radius:15px;padding:16px 18px;cursor:pointer;text-align:right;font-family:inherit;font-size:15px;display:flex;align-items:center;gap:13px;transition:transform .15s,border-color .2s,box-shadow .2s}
+  .choice:hover{transform:translateX(-4px);border-color:var(--teal);box-shadow:var(--shadow-sm)}
+  .choice:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+  .choice .che{font-size:24px}
+  .choice b{font-family:'Tajawal';font-weight:600}
+
+  .disc-result{display:none;text-align:center;animation:fade .5s ease}
+  .disc-result.show{display:block}
+  .disc-result .rok{width:70px;height:70px;border-radius:20px;margin:0 auto 18px;background:linear-gradient(135deg,var(--teal-bright),var(--warm));display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 12px 28px -8px rgba(244,162,97,.5)}
+  .disc-result h3{font-size:27px;font-weight:800;margin-bottom:10px}
+  .disc-result>p{color:var(--muted);font-size:15.5px;margin-bottom:26px;max-width:480px;margin-inline:auto}
+  .matches{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
+  @media(max-width:620px){.matches{grid-template-columns:1fr}}
+  .match{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow-sm)}
+  .match .me{font-size:32px;margin-bottom:8px}
+  .match b{display:block;font-family:'Tajawal';font-weight:700;font-size:16px;margin-bottom:6px}
+  .match .pct{font-size:12.5px;color:var(--good);font-weight:600;background:rgba(47,179,154,.1);display:inline-block;padding:4px 10px;border-radius:7px}
+
+  /* ===== لوحتي ===== */
+  .dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+  @media(max-width:880px){.dash-grid{grid-template-columns:repeat(2,1fr)}}
+  .metric{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow-sm)}
+  .metric .mt{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .metric .mt .e{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px}
+  .metric .mt b{font-family:'Tajawal';font-weight:600;font-size:13.5px;color:var(--muted)}
+  .metric .big{font-family:'Tajawal';font-weight:800;font-size:30px}
+  .metric .big small{font-size:15px;color:var(--muted);font-weight:500}
+  .metric .tr{font-size:12px;color:var(--good);margin-top:4px}
+  .mood{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow-sm)}
+  .mood b{font-family:'Tajawal';font-weight:700;font-size:16px;display:block;margin-bottom:4px}
+  .mood .msub{color:var(--muted);font-size:13.5px;margin-bottom:18px}
+  .faces{display:flex;gap:12px;flex-wrap:wrap}
+  .face{width:58px;height:58px;border-radius:16px;border:1.5px solid var(--line);background:var(--surface);font-size:27px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s,border-color .2s}
+  .face:hover{transform:scale(1.1)}
+  .face.sel{border-color:var(--teal);background:rgba(20,184,166,.1);transform:scale(1.06)}
+  .face:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+
+  /* ===== تبويبات المادة ===== */
+  .tabs{display:flex;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:6px;margin-bottom:22px;box-shadow:var(--shadow-sm)}
+  .tabs button{flex:1;background:none;border:none;cursor:pointer;font-family:'Tajawal';font-weight:700;font-size:14.5px;color:var(--muted);padding:12px;border-radius:10px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:7px}
+  .tabs button.on{background:linear-gradient(135deg,var(--teal-bright),var(--deep));color:#fff;box-shadow:0 8px 18px -8px rgba(14,165,160,.5)}
+  .tabs button:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+  .tabpane{display:none;animation:fade .35s ease}.tabpane.on{display:block}
+
+  /* مواضيع المصادر */
+  .topic{margin-bottom:22px}
+  .topic-h{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .topic-h .tn{width:30px;height:30px;border-radius:9px;background:rgba(20,184,166,.14);color:var(--deep);display:flex;align-items:center;justify-content:center;font-family:'Tajawal';font-weight:800;font-size:14px}
+  .topic-h b{font-family:'Tajawal';font-weight:700;font-size:16px}
+  .topic-h .cnt{margin-right:auto;font-size:12px;color:var(--muted);background:var(--surface2);padding:4px 11px;border-radius:999px}
+
+  /* ===== الشات التفاعلي ===== */
+  .chat-wrap{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm)}
+  .chat-top{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;background:var(--surface2)}
+  .chat-top .live{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--good);font-weight:600}
+  .chat-top .live i{width:7px;height:7px;border-radius:50%;background:var(--good);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .chat-top .mod{margin-right:auto;font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:5px}
+  .chat-body{height:380px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px;background:linear-gradient(180deg,var(--surface2),var(--surface))}
+  .msg{display:flex;gap:10px;align-items:flex-start;max-width:80%}
+  .msg .av{width:34px;height:34px;border-radius:50%;flex-shrink:0;margin:0;border:none;font-size:13px}
+  .msg .bub{background:var(--surface);border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:10px 13px}
+  .msg .bub .nm{font-family:'Tajawal';font-weight:700;font-size:12.5px;color:var(--deep);margin-bottom:3px;display:flex;align-items:center;gap:6px}
+  .msg .bub .nm .uni{color:var(--muted);font-weight:500;font-size:11px}
+  .msg .bub .tx{font-size:14px;line-height:1.65;color:#2A3B39}
+  .msg .bub .modbadge{font-size:9.5px;background:rgba(20,184,166,.15);color:var(--deep);padding:2px 7px;border-radius:6px;font-weight:600}
+  .msg.me{margin-right:auto;flex-direction:row-reverse}
+  .msg.me .bub{background:linear-gradient(135deg,var(--teal-bright),var(--deep));border:none;border-radius:14px 4px 14px 14px;color:#fff}
+  .msg.me .bub .tx{color:#fff}
+  .chat-input{display:flex;gap:10px;padding:14px;border-top:1px solid var(--line);background:var(--surface)}
+  .chat-input input{flex:1;padding:13px 16px;border:1.5px solid var(--line);border-radius:13px;font-family:inherit;font-size:14.5px}
+  .chat-input input:focus{outline:none;border-color:var(--teal)}
+  .chat-input button{background:linear-gradient(135deg,var(--teal-bright),var(--deep));border:none;color:#fff;width:48px;border-radius:13px;cursor:pointer;font-size:18px;flex-shrink:0;transition:transform .15s}
+  .chat-input button:active{transform:scale(.92)}
+  .chat-input button:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+  .chat-rooms{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line);background:var(--surface2);flex-wrap:wrap}
+  .chat-rooms .room{font-size:12px;padding:6px 13px;border-radius:999px;background:var(--surface);border:1px solid var(--line);cursor:pointer;font-weight:600;color:var(--muted)}
+  .chat-rooms .room.on{background:rgba(20,184,166,.14);color:var(--deep);border-color:var(--teal)}
+
+  /* ===== الخطة التدريبية والتوثيق ===== */
+  .week-days{display:flex;gap:8px;margin:14px 0 4px;flex-wrap:wrap}
+  .wday{flex:1;min-width:40px;text-align:center;padding:10px 6px;border-radius:11px;border:1.5px solid var(--line);background:var(--surface)}
+  .wday.on{background:rgba(20,184,166,.12);border-color:var(--teal)}
+  .wday.done{background:linear-gradient(135deg,var(--teal-bright),var(--deep));border:none;color:#fff}
+  .wday b{display:block;font-family:'Tajawal';font-weight:700;font-size:13px}
+  .wday small{font-size:10.5px;color:var(--muted)}
+  .wday.done small{color:rgba(255,255,255,.8)}
+  .doc-item{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
+  .doc-item .dchk{width:26px;height:26px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;border:1.5px solid var(--line);color:var(--muted)}
+  .doc-item.done .dchk{background:var(--good);border-color:var(--good);color:#fff}
+  .doc-item .dt b{font-family:'Tajawal';font-weight:700;font-size:14px;display:block}
+  .doc-item .dt small{color:var(--muted);font-size:12px}
+  .doc-item .cam{margin-right:auto;font-size:12px;color:var(--teal);font-weight:600;cursor:pointer;flex-shrink:0}
+
+  /* بطاقة المستكشفين */
+  .scout{background:linear-gradient(135deg,#125E56,#0E443E);border-radius:18px;padding:24px;color:#fff;position:relative;overflow:hidden}
+  .scout::after{content:"🏆";position:absolute;left:-10px;bottom:-18px;font-size:90px;opacity:.12}
+  .scout .stag{display:inline-block;font-size:11.5px;background:rgba(244,162,97,.25);color:var(--warm);padding:5px 12px;border-radius:999px;font-weight:600;margin-bottom:12px}
+  .scout h3{font-size:20px;font-weight:800;margin-bottom:8px}
+  .scout p{font-size:14px;color:#CFE9E4;line-height:1.7;margin-bottom:16px;position:relative;z-index:2}
+  .scout .reqs{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;position:relative;z-index:2}
+  .scout .req{display:flex;align-items:center;gap:9px;font-size:13px;color:#EAF5F3}
+  .scout .req .c{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+
+  /* باقات الأسعار */
+  .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0}
+  @media(max-width:620px){.prices{grid-template-columns:1fr}}
+  .price{border:1.5px solid var(--line);border-radius:16px;padding:20px;text-align:center;position:relative;cursor:pointer;transition:transform .18s,border-color .2s,box-shadow .2s}
+  .price:hover{transform:translateY(-3px);border-color:var(--teal);box-shadow:var(--shadow)}
+  .price.best{border-color:var(--teal);border-width:2px}
+  .price.best::before{content:"الأكثر قيمة";position:absolute;top:-11px;right:50%;transform:translateX(50%);background:linear-gradient(135deg,var(--teal-bright),var(--deep));color:#fff;font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:999px;font-family:'Tajawal';white-space:nowrap}
+  .price .pname{font-family:'Tajawal';font-weight:700;font-size:15px;margin-bottom:8px}
+  .price .pamt{font-family:'Tajawal';font-weight:800;font-size:28px;color:var(--deep)}
+  .price .pamt small{font-size:13px;color:var(--muted);font-weight:500}
+  .price .pdesc{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.6}
+  .price-note{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6}
+
+  /* فوتر */
+  .foot{background:var(--deep2);color:#9FBFBA;text-align:center;padding:28px 24px;font-size:13px;margin-top:20px}
+  .foot b{color:#fff;font-family:'Tajawal'}
+</style>
+</head>
+<body>
+
+<!-- شريط التنقّل -->
+<header class="nav">
+  <div class="nav-in">
+    <div class="brand"><span class="m">م</span> مواهب</div>
+    <div class="links">
+      <button class="on" id="n-home" onclick="show('home',this)">الرئيسية</button>
+      <button id="n-academic" onclick="show('academic',this)">المسار الأكاديمي</button>
+      <button id="n-talents" onclick="show('talents',this)">المواهب</button>
+      <button id="n-discover" onclick="show('discover',this)">اكتشف موهبتك</button>
+      <button id="n-dashboard" onclick="show('dashboard',this)">لوحتي</button>
+    </div>
+    <span class="nav-badge">جائزة غسان أحمد السليمان · الصحة والعافية</span>
+  </div>
+</header>
+
+<!-- ============ الرئيسية ============ -->
+<div class="view active" id="v-home">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <span class="eyebrow">منصة الصحة النفسية للشباب الطموح</span>
+        <h1>حيث تنطلق <span class="hl">المواهب</span>،<br>وتبرز طاقتك.</h1>
+        <p class="lead">كثير من قلق الشباب وإحباطهم مصدره غياب الوضوح وضعف البيئة الداعمة. «مواهب» تُطلق طاقتك وتُبرز موهبتك — فتجد المعنى، وترتاح نفسك.</p>
+        <div class="quote">الشباب هم القوة والطاقة الحقيقية لتحقيق رؤية 2030.<span>— ولي العهد الأمير محمد بن سلمان</span></div>
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="show('talents',document.getElementById('n-talents'))">جرّب المنصة ›</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('problem').scrollIntoView()">شوف كيف تعالج المشكلة</button>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+        <div class="core">✦</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="problem">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">السبب الجذري</span>
+        <h2>ليش طالب موهوب يُحبط نفسياً؟</h2>
+        <p>المشكلة غالباً نفسية مو عقلية. اكتشفنا إن الفرق بين الشاب المنجِز والشاب العالق ثلاثة جذور — ونحن نعالج كل واحد منها.</p>
+      </div>
+      <div class="pillars">
+        <div class="pcard">
+          <div class="pic">🧭</div>
+          <h3>الوضوح</h3>
+          <p>كثرة الخيارات بلا تجربة تسبب ضباباً وقلقاً دائماً. نعطي الشاب وضوح مساره عبر الاكتشاف والتجربة، فيخفّ التوتر.</p>
+        </div>
+        <div class="pcard">
+          <div class="pic">🤝</div>
+          <h3>البيئة الداعمة</h3>
+          <p>العزلة تُحبط. نوفّر مجتمعاً لكل مادة وموهبة — أقران يشاركونه الطموح، ومرشدون يدلّونه الطريق.</p>
+        </div>
+        <div class="pcard">
+          <div class="pic">⚡</div>
+          <h3>المعنى</h3>
+          <p>الطاقة المحبوسة تتحوّل إحباطاً. لما يصقل موهبته ويرفع أداءه، ترجع الثقة والدافعية — وهذا قلب الصحة النفسية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--surface2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">مساراك في المنصة</span>
+        <h2>طريقان، هدف واحد: راحتك النفسية</h2>
+      </div>
+      <div class="paths">
+        <div class="pathcard acad" onclick="show('academic',document.getElementById('n-academic'))">
+          <div class="tag">للطالب المتعثّر دراسياً</div>
+          <h3>📚 المسار الأكاديمي</h3>
+          <p>التعثّر الدراسي مصدر قلق كبير. مجتمعات لكل مادة، مصادر مجانية، وطلاب يساعدونك — فيرتفع أداءك ويخفّ ضغطك.</p>
+          <span class="go">ادخل المسار ›</span>
+        </div>
+        <div class="pathcard tal" onclick="show('talents',document.getElementById('n-talents'))">
+          <div class="tag">لصاحب الموهبة والطموح</div>
+          <h3>🎯 مسار المواهب</h3>
+          <p>موهبتك المحبوسة تستحق تنطلق. اختر مجالك أو اكتشفه، وادخل مجتمعاً يصقلك ويدعمك في رحلتك.</p>
+          <span class="go">اكتشف مجالك ›</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ المسار الأكاديمي ============ -->
+<div class="view" id="v-academic">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="ic">📚</div>
+      <div>
+        <h2>المسار الأكاديمي</h2>
+        <p>اختر مادتك، وادخل مجتمعها: مصادر منظّمة + طلاب يدرسونها معك</p>
+      </div>
+    </div>
+  </div>
+  <section class="section"><div class="wrap">
+    <div class="note-bar">
+      <span>💡</span>
+      <span><b>كيف تتوسّع المواد؟</b> نبدأ بالمواد الأكثر طلباً ومشاركة بين الجامعات. وخانة «أخرى» تجمع طلبكم — فلما يتجمّع طلب كافٍ على مادة، نفتح لها مجتمعاً. المنصة تنمو ببياناتكم.</span>
+    </div>
+    <div class="cats">
+      <button class="cat" onclick="openSubject('تفاضل وتكامل 1','Math 101','∫')"><div class="ce">∫</div><b>تفاضل وتكامل 1</b><small>Math 101 · 52 طالب</small></button>
+      <button class="cat" onclick="openSubject('فيزياء عامة','Phys 101','⚛️')"><div class="ce">⚛️</div><b>فيزياء عامة</b><small>Phys 101 · 41 طالب</small></button>
+      <button class="cat" onclick="openSubject('مقدمة برمجة','CS 101','💻')"><div class="ce">💻</div><b>مقدمة برمجة</b><small>CS 101 · 63 طالب</small></button>
+      <button class="cat" onclick="openSubject('إحصاء','Stat 201','📊')"><div class="ce">📊</div><b>إحصاء</b><small>Stat 201 · 38 طالب</small></button>
+      <button class="cat" onclick="openSubject('كيمياء عامة','Chem 101','🧪')"><div class="ce">🧪</div><b>كيمياء عامة</b><small>Chem 101 · 29 طالب</small></button>
+      <button class="cat" onclick="openSubject('هياكل بيانات','CS 211','🗂️')"><div class="ce">🗂️</div><b>هياكل بيانات</b><small>CS 211 · 34 طالب</small></button>
+      <button class="cat" onclick="openSubject('لغة إنجليزية','Eng 101','🔤')"><div class="ce">🔤</div><b>لغة إنجليزية</b><small>Eng 101 · 47 طالب</small></button>
+      <button class="cat other" onclick="openOther()"><div class="ce">➕</div><b>أخرى</b><small>اطلب مادتك</small></button>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============ صفحة المادة (مصادر + شات + أسئلة) ============ -->
+<div class="view" id="v-subject">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="ic" id="sub-ic">∫</div>
+      <div>
+        <h2 id="sub-title">مجتمع: تفاضل وتكامل 1</h2>
+        <p id="sub-sub">Math 101 · 52 طالب من 7 جامعات · <span style="color:#7FE0D3">14 متّصل الآن</span></p>
+      </div>
+      <button class="btn btn-ghost btn-sm" style="margin-right:auto" onclick="show('academic',document.getElementById('n-academic'))">‹ كل المواد</button>
+    </div>
+  </div>
+  <section class="section"><div class="wrap">
+    <div class="care" style="cursor:pointer" onclick="openPlans('توجيه')">
+      <span class="e">🤝</span>
+      <p>قربت الاختبارات وحاس بضغط؟ اطلب <b>جلسة توجيه وإرشاد</b> مع مرشد مؤهل، بسرّية تامة — <b>اضغط لعرض الباقات</b>. <span style="opacity:.8">(توجيه — لا يُغني عن الاستشارة الطبية عند الحاجة)</span></p>
+    </div>
+
+    <!-- التبويبات -->
+    <div class="tabs">
+      <button class="on" id="tab-res" onclick="subTab('res')">📚 المصادر</button>
+      <button id="tab-chat" onclick="subTab('chat')">💬 الشات التفاعلي</button>
+      <button id="tab-q" onclick="subTab('q')">❓ الأسئلة</button>
+    </div>
+
+    <!-- تبويب المصادر -->
+    <div class="tabpane on" id="pane-res">
+      <div class="grid-2">
+        <div>
+          <div class="topic">
+            <div class="topic-h"><span class="tn">1</span><b>النهايات والاتصال</b><span class="cnt">4 مصادر</span></div>
+            <div class="res pdf"><span class="ric">📄</span><span class="rm"><b>ملخص النهايات الشامل</b><small>12 صفحة · PDF · ⭐ 4.8</small></span><span class="free">مجاني</span></div>
+            <div class="res vid"><span class="ric">▶</span><span class="rm"><b>شرح الاتصال من الصفر</b><small>فيديو · 18 دقيقة</small></span><span class="free">مجاني</span></div>
+          </div>
+          <div class="topic">
+            <div class="topic-h"><span class="tn">2</span><b>المشتقات</b><span class="cnt">5 مصادر</span></div>
+            <div class="res vid"><span class="ric">▶</span><span class="rm"><b>قواعد الاشتقاق + أمثلة</b><small>فيديو · 24 دقيقة</small></span><span class="free">مجاني</span></div>
+            <div class="res note"><span class="ric">✦</span><span class="rm"><b>أخطاء شائعة في الاشتقاق</b><small>جمعها طلاب سابقون</small></span><span class="free">مجاني</span></div>
+          </div>
+          <div class="topic">
+            <div class="topic-h"><span class="tn">3</span><b>التكامل</b><span class="cnt">6 مصادر</span></div>
+            <div class="res pdf"><span class="ric">📄</span><span class="rm"><b>جدول التكاملات الأساسية</b><small>3 صفحات · PDF · ⭐ 4.9</small></span><span class="free">مجاني</span></div>
+            <div class="res note"><span class="ric">✦</span><span class="rm"><b>أسئلة الاختبارات السابقة محلولة</b><small>تجميعة الفصول الماضية</small></span><span class="free">مجاني</span></div>
+          </div>
+        </div>
+        <div class="side">
+          <div class="card" style="margin-bottom:20px">
+            <div class="card-h"><h3>طلاب المادة</h3></div>
+            <div class="members">
+              <span class="av" style="background:#0EA5A0">سا</span>
+              <span class="av" style="background:#F4A261">عب</span>
+              <span class="av" style="background:#5B7FE0">نو</span>
+              <span class="av" style="background:#C065C0">رغ</span>
+              <span class="more">+48</span>
+            </div>
+            <div style="color:var(--muted);font-size:13px;margin-top:12px;line-height:1.6"><b style="font-family:'Tajawal';color:var(--ink)">52 طالب</b> من 7 جامعات يدرسون المادة معك</div>
+          </div>
+          <div class="goalbox">
+            <div class="ring2"><i>72%</i></div>
+            <div><b>هدف الأسبوع: 5 جلسات مذاكرة</b><small>خلّصت 4 — باقي وحدة 🔥</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- تبويب الشات -->
+    <div class="tabpane" id="pane-chat">
+      <div class="chat-wrap">
+        <div class="chat-top">
+          <span class="live"><i></i>14 متّصل الآن</span>
+          <span class="mod">🛡️ مُدار بإشراف — بيئة آمنة ومحترمة</span>
+        </div>
+        <div class="chat-body" id="chatBody">
+          <div class="msg">
+            <span class="av" style="background:#5B7FE0">نو</span>
+            <div class="bub"><div class="nm">نورة ا. <span class="uni">· جامعة طيبة</span></div><div class="tx">السلام عليكم، أي أحد فهم درس التكامل بالتجزئة؟ 😅</div></div>
+          </div>
+          <div class="msg">
+            <span class="av" style="background:#2FB39A">في<span class="modbadge"></span></span>
+            <div class="bub"><div class="nm">فيصل (مشرف) <span class="modbadge">🛡️ مرشد</span></div><div class="tx">عليكم السلام نورة! أكيد، فيه ملخص ممتاز له في تبويب المصادر، وأقدر أشرحه لك خطوة خطوة. ابدئي بقاعدة LIATE لاختيار u.</div></div>
+          </div>
+          <div class="msg">
+            <span class="av" style="background:#F4A261">عب</span>
+            <div class="bub"><div class="nm">عبدالله ر. <span class="uni">· جامعة الأمير مقرن</span></div><div class="tx">أنا بعد كنت متعثّر فيه، الفيديو اللي بالمصادر طلّع لي الزبدة 👌</div></div>
+          </div>
+          <div class="msg me">
+            <span class="av" style="background:linear-gradient(135deg,#14B8A6,#0F4C46)">أنا</span>
+            <div class="bub"><div class="tx">تمام، بشوف الملخص وأرجع لكم لو احتجت 🙏</div></div>
+          </div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="chatInput" placeholder="اكتب رسالتك للمجتمع..." onkeydown="if(event.key==='Enter')sendMsg()">
+          <button onclick="sendMsg()" aria-label="إرسال">➤</button>
+        </div>
+        <div class="chat-rooms">
+          <span class="room on">💬 عام</span>
+          <span class="room">📝 قبل الاختبار</span>
+          <span class="room">🎧 غرفة مذاكرة مباشرة</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- تبويب الأسئلة -->
+    <div class="tabpane" id="pane-q">
+      <div class="card-h" style="margin-bottom:16px"><h3 style="font-family:'Tajawal';font-size:18px">أسئلة وأجوبة محفوظة</h3><a style="color:var(--teal);font-weight:600;cursor:pointer">اطرح سؤال +</a></div>
+      <div class="q">
+        <div class="who"><span class="av" style="background:#5B7FE0">نو</span><div><b>نورة ا.</b><small>قبل 8 دقائق · جامعة طيبة</small></div></div>
+        <div class="qt">في مسألة الـ limit لما أعوّض ويطلع 0/0 — متى أستخدم لوبيتال ومتى أبسّط بالعامل المشترك؟ 🤔</div>
+        <div class="qf"><span class="ans">✓ 3 إجابات</span><span>♡ 12</span><span class="rep">شارك بإجابة</span></div>
+      </div>
+      <div class="q">
+        <div class="who"><span class="av" style="background:#0EA5A0">سا</span><div><b>سارة م.</b><small>قبل ساعة · جامعة الأمير مقرن</small></div></div>
+        <div class="qt">خلّصت تمارين 14.7، أي أحد يبي نراجع نقاط الـ saddle مع بعض المغرب؟ 📈</div>
+        <div class="qf"><span class="ans">✓ 5 إجابات</span><span>♡ 27</span><span class="rep">انضم</span></div>
+      </div>
+      <div class="q">
+        <div class="who"><span class="av" style="background:#C065C0">رغ</span><div><b>رغد ع.</b><small>أمس · جامعة القصيم</small></div></div>
+        <div class="qt">وش أفضل ترتيب أذاكر فيه المادة للنهائي؟ حاسة إني متشتتة وما أعرف من وين أبدأ 😞</div>
+        <div class="qf"><span class="ans">✓ 7 إجابات</span><span>♡ 41</span><span class="rep">شارك بإجابة</span></div>
+      </div>
+    </div>
+
+  </div></section>
+</div>
+
+<!-- ============ المواهب (الفئات) ============ -->
+<div class="view" id="v-talents">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="ic">🎯</div>
+      <div>
+        <h2>مسار المواهب</h2>
+        <p>اختر مجال موهبتك، وندخلك مجتمعاً يصقلك ويدعمك</p>
+      </div>
+    </div>
+  </div>
+  <section class="section"><div class="wrap">
+    <div class="note-bar">
+      <span>💡</span>
+      <span><b>كيف تتوسّع المجالات؟</b> نبدأ بالأكثر طلباً. وخانة «أخرى» تجمع اهتماماتكم — فلما يتجمّع طلب كافٍ على مجال جديد، نفتحه رسمياً. المنصة تنمو ببياناتكم، لا بتخميننا.</span>
+    </div>
+    <div class="cats">
+      <button class="cat" onclick="openTalent('الرياضة','🏅')"><div class="ce">🏅</div><b>رياضة</b><small>بمختلف أنواعها</small></button>
+      <button class="cat" onclick="openTalent('الرياضات الإلكترونية','🎮')"><div class="ce">🎮</div><b>eSports</b><small>رياضات إلكترونية</small></button>
+      <button class="cat" onclick="openTalent('ريادة الأعمال','💡')"><div class="ce">💡</div><b>ريادة الأعمال</b><small>مشاريع وابتكار</small></button>
+      <button class="cat" onclick="openTalent('الكتابة','✍️')"><div class="ce">✍️</div><b>الكتابة</b><small>قصص ومقالات</small></button>
+      <button class="cat" onclick="openTalent('الرسم','🎨')"><div class="ce">🎨</div><b>الرسم</b><small>فنون بصرية</small></button>
+      <button class="cat" onclick="openTalent('الخط','🖋️')"><div class="ce">🖋️</div><b>الخط</b><small>خط عربي وزخرفة</small></button>
+      <button class="cat" onclick="openTalent('الصوت','🎤')"><div class="ce">🎤</div><b>صوت جميل</b><small>إلقاء وإنشاد</small></button>
+      <button class="cat other" onclick="openOther()"><div class="ce">➕</div><b>أخرى</b><small>اذكر موهبتك</small></button>
+    </div>
+
+    <div class="discover-cta">
+      <div class="dic">🧭</div>
+      <div class="dt"><b>ما تعرف موهبتك؟ هذا طبيعي.</b><p>كثير عندهم طاقة بس ما اكتشفوا مجالهم. جاوب 3 أسئلة قصيرة ونرشّح لك مسارك.</p></div>
+      <button class="btn btn-primary btn-sm" onclick="show('discover',document.getElementById('n-discover'))">اكتشف موهبتك ›</button>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============ مجتمع الموهبة (يظهر بعد اختيار فئة) ============ -->
+<div class="view" id="v-talent-community">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="ic" id="tc-ic">🎯</div>
+      <div>
+        <h2 id="tc-title">مجتمع الموهبة</h2>
+        <p id="tc-sub">رحلتك في صقل موهبتك تبدأ هنا</p>
+      </div>
+      <button class="btn btn-ghost btn-sm" style="margin-right:auto" onclick="show('talents',document.getElementById('n-talents'))">‹ كل المجالات</button>
+    </div>
+  </div>
+  <section class="section"><div class="wrap">
+    <div class="care">
+      <span class="e">🌟</span>
+      <p>صقل موهبتك مو بس تطوير مهارة — هو <b>استثمار في صحتك النفسية</b>. كل تقدّم تشوفه يرفع ثقتك ويعطيك معنى.</p>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="card">
+          <div class="card-h"><div><h3 id="tc-h">خطتك التدريبية</h3><div class="csub">برنامج 3 أيام بالأسبوع مع متابعة مرشدك</div></div><a>عدّل الخطة</a></div>
+          <div class="week-days">
+            <div class="wday done"><b>السبت</b><small>تمرين ✓</small></div>
+            <div class="wday done"><b>الإثنين</b><small>تمرين ✓</small></div>
+            <div class="wday on"><b>الأربعاء</b><small>اليوم</small></div>
+            <div class="wday"><b>باقي</b><small>راحة</small></div>
+          </div>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:10px">التزامك هالأسبوع: <b style="color:var(--good);font-family:'Tajawal'">يومين من 3</b> — باقي تمرين اليوم 💪</div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><div><h3>توثيقك اليومي</h3><div class="csub">وثّق التزامك — مرشدك يتابع ويعطيك Feedback يومي</div></div></div>
+          <div class="doc-item done">
+            <span class="dchk">✓</span>
+            <span class="dt"><b>تمرين اليوم</b><small>وثّقت الإحماء + التمرين الأساسي</small></span>
+            <span class="cam">📹 شاهد</span>
+          </div>
+          <div class="doc-item done">
+            <span class="dchk">✓</span>
+            <span class="dt"><b>الالتزام بالأكل</b><small>سجّلت وجباتك — بروتين كافٍ اليوم</small></span>
+            <span class="cam">📷 الصور</span>
+          </div>
+          <div class="doc-item">
+            <span class="dchk">○</span>
+            <span class="dt"><b>تسجيل أداء اليوم</b><small>صوّر تمرينك عشان مرشدك يحلّله</small></span>
+            <span class="cam">＋ ارفع</span>
+          </div>
+          <div style="background:var(--surface2);border-radius:12px;padding:13px;margin-top:8px;font-size:13px;line-height:1.7">
+            <b style="font-family:'Tajawal';color:var(--deep)">💬 Feedback المرشد (أمس):</b> "أداؤك يتحسّن! ركّز على وضعية القدم وقت التسديد، وزِد تمارين التوازن. استمر 👏"
+          </div>
+        </div>
+
+        <div class="scout">
+          <span class="stag">🏆 فرصتك الحقيقية</span>
+          <h3>اعرض موهبتك لمستكشفي الأداء</h3>
+          <p>وصلت لمستوى متقدّم؟ ارفع فيديو أدائك بمواصفات احترافية، مع توصية من مرشدك — ونعرضه على الأندية والكشّافين والجهات الباحثة عن المواهب.</p>
+          <div class="reqs">
+            <div class="req"><span class="c">1</span> فيديو واضح (دقيقة–دقيقتين) يبرز مهارتك</div>
+            <div class="req"><span class="c">2</span> نص تعريفي بمستواك وإنجازاتك</div>
+            <div class="req"><span class="c">3</span> توصية موثّقة من مرشدك في المنصة</div>
+          </div>
+          <button class="btn btn-primary btn-sm" style="background:linear-gradient(135deg,var(--warm),var(--warm-d));position:relative;z-index:2">جهّز ملف العرض ›</button>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="sbox" style="background:linear-gradient(160deg,var(--deep),var(--deep2));color:#fff;border-radius:18px;padding:22px;margin-bottom:20px;text-align:center">
+          <div style="font-size:40px;line-height:1">🔥</div>
+          <div style="font-family:'Tajawal';font-weight:800;font-size:34px;margin:6px 0">90 <span style="font-size:18px;font-weight:600">يوم</span></div>
+          <div style="font-size:13px;color:#BFDAD5">تحدّي الـ 90 يوم — التزامك المتواصل في صقل موهبتك</div>
+          <div class="bar" style="margin-top:14px"><i style="width:46%"></i></div>
+          <div style="font-size:12px;color:#9FD8CF;margin-top:8px">اليوم 41 من 90 — نص الطريق تقريباً 💪</div>
+        </div>
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-h"><h3>مرشدك في المجال</h3></div>
+          <div style="display:flex;gap:13px;align-items:center">
+            <span class="av" style="background:linear-gradient(135deg,var(--teal),var(--warm));margin:0;width:50px;height:50px;border:none">م</span>
+            <div><b style="font-family:'Tajawal';font-size:15px">مرشد مؤهل</b><div style="color:var(--muted);font-size:13px">يضع خطتك ويتابع تقدّمك بالـ Feedback</div></div>
+          </div>
+          <button class="btn btn-primary btn-sm" style="width:100%;margin-top:16px;justify-content:center" onclick="openPlans('تدريب وإرشاد')">اشترك في المتابعة ›</button>
+        </div>
+        <div class="goalbox">
+          <div class="ring2"><i>40%</i></div>
+          <div><b>رحلة صقل الموهبة</b><small>أنجزت أول تحدّيين — استمر، الوضوح يجي بالتجربة</small></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============ اكتشف موهبتك ============ -->
+<div class="view" id="v-discover">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="ic">🧭</div>
+      <div>
+        <h2>اكتشف موهبتك</h2>
+        <p>الوضوح يبدأ بمعرفة نفسك — اختر طريقة الاكتشاف</p>
+      </div>
+    </div>
+  </div>
+  <section class="section"><div class="wrap"><div class="disc-wrap">
+
+    <!-- اختيار الطريقة -->
+    <div id="discMethod">
+      <div class="method-cards">
+        <button class="method" onclick="startMethod('exp')">
+          <div class="mie">🌱</div>
+          <b>رحلة تجاربك</b>
+          <p>أسئلة عن طفولتك، تجاربك السابقة، واللي تستمتع فيه. ميولك الحقيقية مدفونة في ماضيك.</p>
+          <span class="mtag">4 أسئلة · ~3 دقائق</span>
+        </button>
+        <button class="method g" onclick="startMethod('gardner')">
+          <div class="mie">🧠</div>
+          <b>اختبار الذكاءات المتعددة</b>
+          <p>30 سؤال مبني على نظرية جاردنر (Gardner) للذكاءات المتعددة، يحلّلها الذكاء الاصطناعي ويحدّد مسارك بدقة.</p>
+          <span class="mtag">30 سؤال · تحليل AI 🤖</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- طريقة 1: رحلة التجارب -->
+    <div id="discExp" style="display:none">
+      <div class="progress"><i class="on" id="ep1"></i><i id="ep2"></i><i id="ep3"></i><i id="ep4"></i></div>
+      <div class="qstep active" id="eqs1">
+        <div class="qn">السؤال 1 من 4</div>
+        <h3>وش كنت تحب تسويه وأنت صغير وتستمتع فيه؟</h3>
+        <div class="qhint">ميول الطفولة غالباً أصدق إشارة لموهبتك الفطرية.</div>
+        <div class="choices">
+          <button class="choice" onclick="ans2('exp',1,'physical')"><span class="che">🏃</span><b>ألعب وأتحرّك وأتنافس</b></button>
+          <button class="choice" onclick="ans2('exp',1,'digital')"><span class="che">🎮</span><b>ألعب ألعاب أو أفكّك الأجهزة</b></button>
+          <button class="choice" onclick="ans2('exp',1,'creative')"><span class="che">🎨</span><b>أرسم، ألوّن، أو أبني أشياء</b></button>
+          <button class="choice" onclick="ans2('exp',1,'social')"><span class="che">🗣️</span><b>أقود ألعاب الجماعة وأنظّمهم</b></button>
+        </div>
+      </div>
+      <div class="qstep" id="eqs2">
+        <div class="qn">السؤال 2 من 4</div>
+        <h3>وش النشاط اللي تنسى الوقت وأنت تسويه؟</h3>
+        <div class="qhint">حالة "التدفّق" (Flow) — تنغمس وتنسى كل شي — أقوى مؤشر موهبة.</div>
+        <div class="choices">
+          <button class="choice" onclick="ans2('exp',2,'physical')"><span class="che">⚽</span><b>الرياضة والحركة</b></button>
+          <button class="choice" onclick="ans2('exp',2,'digital')"><span class="che">💻</span><b>التقنية والألعاب</b></button>
+          <button class="choice" onclick="ans2('exp',2,'creative')"><span class="che">🖌️</span><b>الرسم والكتابة والإبداع</b></button>
+          <button class="choice" onclick="ans2('exp',2,'social')"><span class="che">🤝</span><b>التنظيم والتعامل مع الناس</b></button>
+        </div>
+      </div>
+      <div class="qstep" id="eqs3">
+        <div class="qn">السؤال 3 من 4</div>
+        <h3>وش أكثر تجربة بحياتك حسّيت فيها بالفخر والإنجاز؟</h3>
+        <div class="qhint">لحظات الفخر تكشف وين تتألّق طاقتك فعلاً.</div>
+        <div class="choices">
+          <button class="choice" onclick="ans2('exp',3,'physical')"><span class="che">🏅</span><b>فزت بمنافسة أو تحدّي بدني</b></button>
+          <button class="choice" onclick="ans2('exp',3,'digital')"><span class="che">🖥️</span><b>بنيت/حليت شي تقني صعب</b></button>
+          <button class="choice" onclick="ans2('exp',3,'creative')"><span class="che">✍️</span><b>أنتجت عملاً إبداعياً أعجب الناس</b></button>
+          <button class="choice" onclick="ans2('exp',3,'social')"><span class="che">🎤</span><b>قدت فريقاً أو ألقيت/أقنعت</b></button>
+        </div>
+      </div>
+      <div class="qstep" id="eqs4">
+        <div class="qn">السؤال 4 من 4</div>
+        <h3>الناس يجونك ويطلبون مساعدتك في أي شي؟</h3>
+        <div class="qhint">اللي يراه الناس فيك، أحياناً تكون أنت آخر من ينتبه له.</div>
+        <div class="choices">
+          <button class="choice" onclick="ans2('exp',4,'physical')"><span class="che">💪</span><b>التمارين والرياضة</b></button>
+          <button class="choice" onclick="ans2('exp',4,'digital')"><span class="che">⚙️</span><b>التقنية والأجهزة</b></button>
+          <button class="choice" onclick="ans2('exp',4,'creative')"><span class="che">🎨</span><b>التصميم والكتابة والفن</b></button>
+          <button class="choice" onclick="ans2('exp',4,'social')"><span class="che">🗣️</span><b>التنظيم والإقناع والكلام</b></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- طريقة 2: اختبار جاردنر -->
+    <div id="discGardner" style="display:none">
+      <div class="progress" id="gprog"></div>
+      <div class="qstep active" id="gqs1">
+        <div class="qn">السؤال <span class="gnum">1</span> من 30 · ذكاء منطقي–رياضي</div>
+        <h3>أستمتع بحل المسائل المنطقية والألغاز وأكتشف الأنماط بسهولة.</h3>
+        <div class="qhint">جاوب بصدق حسب ما ينطبق عليك.</div>
+        <div class="choices">
+          <button class="choice" onclick="ansG(1,'digital')"><span class="che">✅</span><b>ينطبق عليّ تماماً</b></button>
+          <button class="choice" onclick="ansG(1,'digital')"><span class="che">🔵</span><b>ينطبق أحياناً</b></button>
+          <button class="choice" onclick="ansG(1,'social')"><span class="che">⚪</span><b>لا ينطبق عليّ</b></button>
+        </div>
+      </div>
+      <div class="qstep" id="gqs2">
+        <div class="qn">السؤال <span class="gnum">2</span> من 30 · ذكاء لغوي</div>
+        <h3>أعبّر عن أفكاري بسهولة بالكلمات، وأحب القراءة والكتابة.</h3>
+        <div class="qhint">جاوب بصدق حسب ما ينطبق عليك.</div>
+        <div class="choices">
+          <button class="choice" onclick="ansG(2,'creative')"><span class="che">✅</span><b>ينطبق عليّ تماماً</b></button>
+          <button class="choice" onclick="ansG(2,'creative')"><span class="che">🔵</span><b>ينطبق أحياناً</b></button>
+          <button class="choice" onclick="ansG(2,'physical')"><span class="che">⚪</span><b>لا ينطبق عليّ</b></button>
+        </div>
+      </div>
+      <div class="qstep" id="gqs3">
+        <div class="qn">السؤال <span class="gnum">3</span> من 30 · ذكاء حركي–جسدي</div>
+        <h3>أتعلّم أسرع لما أتحرّك وأمارس بيدي، وأجيد الأنشطة البدنية.</h3>
+        <div class="qhint">جاوب بصدق حسب ما ينطبق عليك.</div>
+        <div class="choices">
+          <button class="choice" onclick="ansG(3,'physical')"><span class="che">✅</span><b>ينطبق عليّ تماماً</b></button>
+          <button class="choice" onclick="ansG(3,'physical')"><span class="che">🔵</span><b>ينطبق أحياناً</b></button>
+          <button class="choice" onclick="ansG(3,'digital')"><span class="che">⚪</span><b>لا ينطبق عليّ</b></button>
+        </div>
+      </div>
+      <div class="qstep" id="gqs4">
+        <div class="qn">السؤال <span class="gnum">4</span> من 30 · ذكاء اجتماعي</div>
+        <h3>أفهم مشاعر الناس بسهولة، وأقدر أقودهم وأنظّمهم وأقنعهم.</h3>
+        <div class="qhint">جاوب بصدق حسب ما ينطبق عليك.</div>
+        <div class="choices">
+          <button class="choice" onclick="ansG(4,'social')"><span class="che">✅</span><b>ينطبق عليّ تماماً</b></button>
+          <button class="choice" onclick="ansG(4,'social')"><span class="che">🔵</span><b>ينطبق أحياناً</b></button>
+          <button class="choice" onclick="ansG(4,'digital')"><span class="che">⚪</span><b>لا ينطبق عليّ</b></button>
+        </div>
+      </div>
+      <div class="qstep" id="gqs5">
+        <div class="qn">السؤال <span class="gnum">5</span> من 30 · ذكاء بصري–مكاني</div>
+        <h3>أتخيّل الأشكال والتصاميم بسهولة، وعندي حس فني وبصري.</h3>
+        <div class="qhint">باقي الأسئلة تقيس بقية الذكاءات — ويحلّلها الـ AI.</div>
+        <div class="choices">
+          <button class="choice" onclick="ansG(5,'creative')"><span class="che">✅</span><b>ينطبق عليّ تماماً</b></button>
+          <button class="choice" onclick="ansG(5,'creative')"><span class="che">🔵</span><b>ينطبق أحياناً</b></button>
+          <button class="choice" onclick="ansG(5,'physical')"><span class="che">⚪</span><b>لا ينطبق عليّ</b></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- تحليل AI -->
+    <div class="ai-analyzing" id="aiAnalyzing">
+      <div class="ai-spin">🤖</div>
+      <h3>الذكاء الاصطناعي يحلّل إجاباتك...</h3>
+      <p>نطابق نمط ذكاءاتك المتعددة مع المجالات الأنسب لك</p>
+    </div>
+
+    <!-- النتيجة -->
+    <div class="disc-result" id="discResult">
+      <div class="rok">✨</div>
+      <h3>رشّحنا لك مسارك</h3>
+      <p id="resultDesc">بناءً على إجاباتك، هذي المجالات الأقرب لميولك. جرّبها — الموهبة تتأكد بالتجربة مو بالتفكير.</p>
+      <div class="matches" id="matches"></div>
+      <button class="btn btn-primary" onclick="show('talents',document.getElementById('n-talents'))">ادخل مجتمع المجال المقترح ›</button>
+      <div style="margin-top:14px"><button class="btn btn-ghost btn-sm" onclick="restartDiscover()">اختر طريقة ثانية</button></div>
+    </div>
+
+  </div></div></section>
+</div>
+
+<!-- ============ لوحتي ============ -->
+<div class="view" id="v-dashboard">
+  <div class="page-head">
+    <div class="wrap">
+      <div class="ic">🌙</div>
+      <div>
+        <h2>رحلتك نحو الوضوح</h2>
+        <p>مساء الخير، محمد — نتابع تقدّمك وراحتك النفسية</p>
+      </div>
+    </div>
+  </div>
+  <section class="section"><div class="wrap">
+    <div class="sbox clarity" style="background:linear-gradient(160deg,var(--deep),var(--deep2));color:#fff;border-radius:18px;padding:26px;margin-bottom:24px">
+      <div class="cl-h"><h4 style="font-size:16px">مؤشر الوضوح</h4><span>68%</span></div>
+      <div class="bar"><i style="width:68%"></i></div>
+      <small>ارتفع 12% هذا الأسبوع — كل ما زاد وضوحك ودعمك، خفّ قلقك. استمر على نفس النهج.</small>
+    </div>
+    <div class="dash-grid">
+      <div class="metric"><div class="mt"><span class="e" style="background:var(--warm-soft)">🔥</span><b>الاستمرارية</b></div><div class="big">9 <small>أيام</small></div><div class="tr">أطول ستريك لك</div></div>
+      <div class="metric"><div class="mt"><span class="e" style="background:rgba(20,184,166,.14)">👥</span><b>مجتمعاتك</b></div><div class="big">3</div><div class="tr">تفاضل · رسم · ريادة</div></div>
+      <div class="metric"><div class="mt"><span class="e" style="background:#E7F0FD">💬</span><b>ساعدت</b></div><div class="big">11 <small>شخص</small></div><div class="tr">دعمك يرجع لك دعم</div></div>
+      <div class="metric"><div class="mt"><span class="e" style="background:rgba(47,179,154,.14)">✓</span><b>أنجزت</b></div><div class="big">24 <small>مهمة</small></div><div class="tr">هذا الشهر</div></div>
+    </div>
+    <div class="mood">
+      <b>كيف نفسيتك اليوم؟</b>
+      <div class="msub">نتابع معك — مو عشان نحكم، عشان نعرف وش يفيدك. (لو احتجت دعماً أعمق، نوصّلك بمختص)</div>
+      <div class="faces" role="group" aria-label="تقييم المزاج">
+        <button class="face" onclick="pickMood(this)" aria-label="متضايق">😔</button>
+        <button class="face" onclick="pickMood(this)" aria-label="تعبان">😕</button>
+        <button class="face sel" onclick="pickMood(this)" aria-label="عادي">🙂</button>
+        <button class="face" onclick="pickMood(this)" aria-label="منشرح">😃</button>
+        <button class="face" onclick="pickMood(this)" aria-label="متحمّس">🤩</button>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<div class="foot">منصة <b>مواهب</b> · نموذج أولي تفاعلي — نحسّن الصحة النفسية للشباب الطموح بإطلاق طاقتهم المحبوسة</div>
+
+<!-- مودال "أخرى" -->
+<div class="modal" id="otherModal">
+  <div class="modal-box">
+    <div id="otherForm">
+      <div class="mi">➕</div>
+      <h3>اذكر موهبتك أو اهتمامك</h3>
+      <p>ما لقيت مجالك في القائمة؟ اكتبه هنا. كل طلب نسجّله — ولما يتجمّع طلب كافٍ على مجالك، نفتح له مجتمعاً رسمياً.</p>
+      <input type="text" id="otherInput" placeholder="مثال: التصوير، الطبخ، البرمجة، الفلك...">
+      <div class="mrow">
+        <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="submitOther()">سجّل اهتمامي</button>
+        <button class="btn btn-ghost" onclick="closeOther()">إلغاء</button>
+      </div>
+    </div>
+    <div id="otherDone" style="text-align:center">
+      <div class="ok" style="margin-inline:auto">✓</div>
+      <h3>سجّلنا اهتمامك!</h3>
+      <p id="otherMsg"></p>
+      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="closeOther()">تمام</button>
+    </div>
+  </div>
+</div>
+
+<!-- مودال باقات التوجيه/المتابعة -->
+<div class="modal" id="plansModal">
+  <div class="modal-box" style="max-width:620px">
+    <div class="mi">🗓️</div>
+    <h3 id="plansTitle">اختر باقة التوجيه والمتابعة</h3>
+    <p>جلسات فردية مع مرشد مؤهل + متابعة لخطتك. اختر ما يناسبك:</p>
+    <div class="prices">
+      <div class="price" onclick="pickPlan(this)">
+        <div class="pname">تجربة</div>
+        <div class="pamt">79 <small>ريال</small></div>
+        <div class="pdesc">جلسة واحدة (ساعة) — تتعرّف على مرشدك وتبدأ خطتك</div>
+      </div>
+      <div class="price best" onclick="pickPlan(this)">
+        <div class="pname">متابعة</div>
+        <div class="pamt">249 <small>ريال/شهر</small></div>
+        <div class="pdesc">3 جلسات أسبوعياً (ساعة/جلسة) + متابعة يومية وFeedback</div>
+      </div>
+      <div class="price" onclick="pickPlan(this)">
+        <div class="pname">مكثّف</div>
+        <div class="pamt">349 <small>ريال/شهر</small></div>
+        <div class="pdesc">4 جلسات أسبوعياً + متابعة يومية + أولوية في العرض للمستكشفين</div>
+      </div>
+    </div>
+    <div class="price-note">💡 الخدمة الأساسية (المجتمعات والمصادر) مجانية دائماً. الباقات للتوجيه الفردي والمتابعة فقط.<br><b>توجيه وإرشاد — لا يُغني عن الاستشارة الطبية المتخصصة عند الحاجة.</b></div>
+    <div style="display:flex;gap:10px;margin-top:18px">
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="closePlans()">تأكيد الاشتراك</button>
+      <button class="btn btn-ghost" onclick="closePlans()">لاحقاً</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function show(id, btn){
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    document.getElementById('v-'+id).classList.add('active');
+    document.querySelectorAll('.links button').forEach(b=>b.classList.remove('on'));
+    if(btn && btn.id && btn.id.startsWith('n-')) btn.classList.add('on');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  // مجتمع الموهبة
+  function openTalent(name, emoji){
+    document.getElementById('tc-title').textContent = 'مجتمع: ' + name;
+    document.getElementById('tc-ic').textContent = emoji;
+    document.getElementById('tc-sub').innerHTML = '1000+ شاب في مجال ' + name + ' · <span style="color:#7FE0D3">يطوّرون موهبتهم الآن</span>';
+    document.getElementById('tc-h').textContent = 'خطتك التدريبية';
+    show('talent-community', null);
+  }
+
+  // صفحة المادة
+  function openSubject(name, code, emoji){
+    document.getElementById('sub-title').textContent = 'مجتمع: ' + name;
+    document.getElementById('sub-ic').textContent = emoji;
+    document.getElementById('sub-sub').innerHTML = code + ' · طلاب من جامعات المملكة · <span style="color:#7FE0D3">متّصلون الآن</span>';
+    subTab('res');
+    show('subject', document.getElementById('n-academic'));
+  }
+  function subTab(t){
+    ['res','chat','q'].forEach(x=>{
+      document.getElementById('tab-'+x).classList.toggle('on', x===t);
+      document.getElementById('pane-'+x).classList.toggle('on', x===t);
+    });
+    if(t==='chat'){ const b=document.getElementById('chatBody'); b.scrollTop=b.scrollHeight; }
+  }
+  function sendMsg(){
+    const inp=document.getElementById('chatInput'); const v=inp.value.trim(); if(!v)return;
+    const body=document.getElementById('chatBody');
+    const m=document.createElement('div'); m.className='msg me';
+    m.innerHTML='<span class="av" style="background:linear-gradient(135deg,#14B8A6,#0F4C46)">أنا</span><div class="bub"><div class="tx"></div></div>';
+    m.querySelector('.tx').textContent=v;
+    body.appendChild(m); inp.value=''; body.scrollTop=body.scrollHeight;
+  }
+
+  // مودال أخرى
+  function openOther(){ document.getElementById('otherModal').classList.add('show'); document.getElementById('otherForm').style.display='block'; document.getElementById('otherDone').style.display='none'; document.getElementById('otherInput').value=''; setTimeout(()=>document.getElementById('otherInput').focus(),100); }
+  function closeOther(){ document.getElementById('otherModal').classList.remove('show'); }
+  function openOtherFn(){}
+  function submitOther(){
+    const v = document.getElementById('otherInput').value.trim();
+    if(!v){ document.getElementById('otherInput').focus(); return; }
+    document.getElementById('otherMsg').textContent = 'بنخبرك أول ما نفتح مجتمع «'+v+'». كل ما زاد عدد المهتمين بنفس المجال، أسرعنا في فتحه.';
+    document.getElementById('otherForm').style.display='none';
+    document.getElementById('otherDone').style.display='block';
+  }
+
+  // مزاج
+  function pickMood(btn){ document.querySelectorAll('.face').forEach(f=>f.classList.remove('sel')); btn.classList.add('sel'); }
+
+  // باقات التوجيه
+  function openPlans(t){ document.getElementById('plansModal').classList.add('show'); }
+  function closePlans(){ document.getElementById('plansModal').classList.remove('show'); }
+  function pickPlan(el){ document.querySelectorAll('.price').forEach(p=>p.classList.remove('best')); el.classList.add('best'); }
+
+  // الاكتشاف — طريقتان
+  const ans = {}; let curMethod='exp';
+  const TALENTS = {
+    physical:{e:'🏅',n:'الرياضة'}, digital:{e:'🎮',n:'الرياضات الإلكترونية / التقنية'},
+    creative:{e:'🎨',n:'الفنون والكتابة'}, social:{e:'💡',n:'ريادة الأعمال والإلقاء'}
+  };
+
+  function startMethod(m){
+    curMethod=m; for(let k in ans) delete ans[k];
+    document.getElementById('discMethod').style.display='none';
+    if(m==='exp'){
+      document.getElementById('discExp').style.display='block';
+    } else {
+      // بناء مؤشر تقدّم جاردنر (30)
+      let prog=''; for(let i=0;i<30;i++) prog+='<i'+(i===0?' class="on"':'')+' id="gp'+(i+1)+'"></i>';
+      document.getElementById('gprog').innerHTML=prog;
+      document.getElementById('gprog').style.flexWrap='wrap';
+      document.getElementById('discGardner').style.display='block';
+    }
+  }
+
+  // طريقة التجارب (4 أسئلة)
+  function ans2(method, step, val){
+    ans[step]=val;
+    document.getElementById('ep'+step).classList.add('on');
+    if(step<4){
+      document.getElementById('eqs'+step).classList.remove('active');
+      document.getElementById('eqs'+(step+1)).classList.add('active');
+    } else { finishDiscover(false); }
+  }
+
+  // طريقة جاردنر (نعرض 5 عيّنات من 30، ثم تحليل AI)
+  function ansG(step, val){
+    ans[step]=val;
+    // نضيء تقدّم متناسب (كل سؤال يضيء 6 خانات لمحاكاة 30)
+    for(let i=0;i<6;i++){ const idx=(step-1)*6+i+1; const el=document.getElementById('gp'+idx); if(el)el.classList.add('on'); }
+    if(step<5){
+      document.getElementById('gqs'+step).classList.remove('active');
+      document.getElementById('gqs'+(step+1)).classList.add('active');
+    } else {
+      // أكملنا العيّنة — تحليل AI
+      document.getElementById('discGardner').style.display='none';
+      const ai=document.getElementById('aiAnalyzing'); ai.classList.add('show');
+      setTimeout(()=>{ ai.classList.remove('show'); finishDiscover(true); }, 2200);
+    }
+  }
+
+  function finishDiscover(isAI){
+    const tally={}; Object.values(ans).forEach(v=>tally[v]=(tally[v]||0)+1);
+    const sorted = Object.keys(tally).sort((a,b)=>tally[b]-tally[a]);
+    const all=['physical','digital','creative','social'];
+    const ordered=[...sorted, ...all.filter(x=>!sorted.includes(x))].slice(0,3);
+    const pcts=['تطابق 92%','تطابق 74%','تطابق 58%'];
+    const box=document.getElementById('matches'); box.innerHTML='';
+    ordered.forEach((k,i)=>{
+      const t=TALENTS[k];
+      box.innerHTML += '<div class="match"><div class="me">'+t.e+'</div><b>'+t.n+'</b><span class="pct">'+pcts[i]+'</span></div>';
+    });
+    document.getElementById('resultDesc').textContent = isAI
+      ? 'حلّل الذكاء الاصطناعي نمط ذكاءاتك المتعددة (جاردنر)، وهذي المجالات الأقرب لمسارك. جرّبها — الموهبة تتأكد بالتجربة.'
+      : 'بناءً على تجاربك وميولك، هذي المجالات الأقرب لك. جرّبها — الموهبة تتأكد بالتجربة مو بالتفكير.';
+    document.getElementById('discResult').classList.add('show');
+  }
+
+  function restartDiscover(){
+    for(let k in ans) delete ans[k];
+    document.getElementById('discResult').classList.remove('show');
+    document.getElementById('aiAnalyzing').classList.remove('show');
+    document.getElementById('discExp').style.display='none';
+    document.getElementById('discGardner').style.display='none';
+    // إعادة ضبط الخطوات
+    document.querySelectorAll('#discExp .qstep').forEach((q,i)=>q.classList.toggle('active',i===0));
+    document.querySelectorAll('#discExp .progress i').forEach((p,i)=>p.classList.toggle('on',i===0));
+    document.querySelectorAll('#discGardner .qstep').forEach((q,i)=>q.classList.toggle('active',i===0));
+    document.getElementById('discMethod').style.display='block';
+  }
+</script>
+</body>
+</html>
